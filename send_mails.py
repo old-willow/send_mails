@@ -10,9 +10,11 @@ from email.MIMEText import MIMEText
 from email import Encoders
 import os
 
+import getpass
 
-def send_email(to, subject, text, attach, passw):
-    gmail_user = ''
+
+def send_email(to, subject, text, attach, user, passw):
+    gmail_user = user
     gmail_password = passw
 
     msg = MIMEMultipart()
@@ -70,10 +72,12 @@ def main():
     subject = '[EMAIL - TEST] Testing sending email from python program'
     text_body = 'This is a test text body!'
 
-    passw = raw_input('Password: ')
+    #passw = raw_input('Password: ')
+    user = raw_input('Gmail account email: ')
+    passw = getpass.getpass(prompt='Type the password for your gmail account: ')
 
     for to in contacts.items():
-        send_email(to[1], subject, text_body, attached_file, passw)
+        send_email(to[1], subject, text_body, attached_file, user, passw)
 
 
 if __name__ == '__main__':
