@@ -1,0 +1,153 @@
+#:kivy 1.9.0
+
+<Box>:
+    orientation: 'vertical'
+
+#    BoxLayout:
+#        orientation: 'horizontal'
+#        height: 120
+#
+#        FileChooser:
+#            id: fc
+#            #FileChooserIconLayout
+#            FileChooserListLayout
+
+    Label:
+        text: 'Mass e-mail sender'
+        font_size: 70
+
+    # For email message to be sent.
+    BoxLayout:
+        orientation: 'horizontal'
+
+        Label:
+            text: 'Email Message:'
+        TextInput:
+            text: '...'
+
+    # for attachement file
+    BoxLayout:
+        orientation: 'horizontal'
+
+#       FileChooserListView:
+#            canvas.before:
+#                Color:
+#                    rgb: .4, .5, .5
+#                Rectangle:
+#                    pos: self.pos
+#                    size: self.size
+#
+#            on_selection: root.select(*args)
+#
+#        FileChooserIconView:
+#            canvas.before:
+#                Color:
+#                    rgb: .5, .4, .5
+#                Rectangle:
+#                    pos: self.pos
+#                    size: self.size
+#            on_select: root.select(*args)
+
+        Label:
+            text: 'Attachment:'
+        Label:
+            id: file_path_label
+            size_hint_y: .1
+            canvas.before:
+                Color:
+                    rgb: .5, .5, .4
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+            text: '/path/to/the/attachement/file'
+        Button:
+            text: 'Browse to the file'
+
+    # for canceling or sending emails
+    BoxLayout:
+        orientation: 'horizontal'
+        #size: 50, 10
+
+        Button:
+            id: button_cancel
+            #size_hint: 10, 10
+            text: "Cancel"
+            #spacing: 20
+            #padding: 20
+            on_press: root.exit()
+
+        Button:
+            id: button_send
+            #size_hint: 10, 10
+            text: "Send"
+            #opacity: 0.5
+            disabled: 1
+
+            #spacing: 20
+            #padding: 20
+
+#<Grid>:
+#    GridLayout:
+#        size: root.size
+#        cols: 2
+#        spacing: 10
+#        padding: 10
+#
+#        Button:
+#            text: "Cancel"
+#        Button:
+#            text: "Send"
+# root refers to root widget. Can have multiply root widgets.
+# self refers to the actual widget.
+# app refers to the App instance
+#    BoxLayout:
+#        orientation: 'vertical'  # 'horizontal'
+#        size: root.size
+#        spacing: 10
+#        padding: 10
+#
+#        Button:
+#            text: "Cancel"
+#        Button:
+#            text: "Cancel"
+#        Button:
+#            text: "Cancel"
+#        Button:
+#            text: "Cancel"
+
+#<ScreenOne>:
+#    Button:
+#        text: "On screen 1 >> Go to screen 2"
+#        on_press: root.manager.current = 'screen2'
+#
+#<ScreenTwo>:
+#    Button:
+#        text: "On screen 2 >> Go to screen 3"
+#        on_press: root.manager.current = 'screen3'
+#
+#<ScreenThree>:
+#    Button:
+#        text: "On screen 3 >> Go to screen 1"
+#        on_press: root.manager.current = 'screen1'
+#
+#<Manager>:
+#    id: screen_manager
+#
+#    screen_one: screen_one
+#    screen_two: screen_two
+#    screen_three: screen_three
+#
+#    ScreenOne:
+#        id: screen_one
+#        name: 'screen1'
+#        manager: screen_manager
+#
+#    ScreenTwo:
+#        id: screen_two
+#        name: 'screen2'
+#        manager: screen_manager
+#
+#    ScreenThree:
+#        id: screen_three
+#        name: 'screen3'
+#        manager: screen_manager
