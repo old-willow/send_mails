@@ -4,3 +4,4 @@ backup/
 *.doc
 *.xlsx
 old/
+.ropeproject
