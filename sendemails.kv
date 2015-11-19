@@ -11,6 +11,7 @@
 #            id: fc
 #            #FileChooserIconLayout
 #            FileChooserListLayout
+    file_path_label: file_path_label
 
     Label:
         text: 'Mass e-mail sender'
@@ -23,45 +24,21 @@
         Label:
             text: 'Email Message:'
         TextInput:
-            text: '...'
+            text: 'Type the message in the email\'s body...'
 
     # for attachement file
     BoxLayout:
         orientation: 'horizontal'
 
-#       FileChooserListView:
-#            canvas.before:
-#                Color:
-#                    rgb: .4, .5, .5
-#                Rectangle:
-#                    pos: self.pos
-#                    size: self.size
-#
-#            on_selection: root.select(*args)
-#
-#        FileChooserIconView:
-#            canvas.before:
-#                Color:
-#                    rgb: .5, .4, .5
-#                Rectangle:
-#                    pos: self.pos
-#                    size: self.size
-#            on_select: root.select(*args)
-
         Label:
             text: 'Attachment:'
         Label:
             id: file_path_label
-            size_hint_y: .1
-            canvas.before:
-                Color:
-                    rgb: .5, .5, .4
-                Rectangle:
-                    pos: self.pos
-                    size: self.size
+            #size_hint_y: .1
             text: '/path/to/the/attachement/file'
         Button:
-            text: 'Browse to the file'
+            text: 'Attach...'
+            on_release: root.show_load()
 
     # for canceling or sending emails
     BoxLayout:
@@ -86,7 +63,33 @@
             #spacing: 20
             #padding: 20
 
+<LoadDialog>:
+    BoxLayout:
+        size: root.size
+        pos: root.pos
+        orientation: "vertical"
+
+        FileChooserListView:
+            id: filechooser
+
+        BoxLayout:
+            size_hint_y: None
+            height: 30
+
+            Button:
+                text: "Cancel"
+                on_release: root.cancel()
+
+            Button:
+                text: "Attach"
+                on_release: root.load(filechooser.path, filechooser.selection)
+
+
+
+
 #<Grid>:
+
+
 #    GridLayout:
 #        size: root.size
 #        cols: 2
